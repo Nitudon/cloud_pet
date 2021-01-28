@@ -78,3 +78,33 @@ Received Import Request.
   path: Assets/Readme.asset
   artifactKey: Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Readme.asset using Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b85b739db1dae0ac6d760c0d453f0761') in 0.371976 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001623 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.087 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4177 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 372.4 MB.
+System memory in use after: 369.6 MB.
+
+Unloading 58 unused Assets to reduce memory usage. Loaded Objects now: 4596.
+Total: 3.863902 ms (FindLiveObjects: 0.328855 ms CreateObjectMapping: 0.217152 ms MarkObjects: 1.961745 ms  DeleteObjects: 1.355057 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 431.035909 seconds.
+  path: Assets/Scenes
+  artifactKey: Guid(b68d0208783eb4026a922413b4b9ebab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes using Guid(b68d0208783eb4026a922413b4b9ebab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eae3bc0519b805d4827c237cd5779024') in 0.005824 seconds 
