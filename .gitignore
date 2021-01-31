@@ -61,3 +61,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+/[Aa]ssets/ExternalAssets
+/[Aa]ssets/ExternalAssets.meta
