@@ -22,6 +22,8 @@ namespace CloudPet.Common
         [SerializeField] 
         private TrackableType _trackableType = TrackableType.Planes;
 
+        private List<ARRaycastHit> _hitListPool = new List<ARRaycastHit>();
+
         public event Action<bool, Vector3> onPointerDownCallback;
         
         private void Start()
@@ -45,12 +47,12 @@ namespace CloudPet.Common
             }
 
             var hitPosition = Vector3.zero;
-            var hitList = new List<ARRaycastHit>();
-            var raycast = _raycastManager.Raycast(position, hitList, _trackableType);
+            _hitListPool.Clear();
+            var raycast = _raycastManager.Raycast(position, _hitListPool, _trackableType);
 
             if (raycast)
             {
-                var hit = hitList.FirstOrDefault().pose;
+                var hit = _hitListPool.FirstOrDefault().pose;
                 hitPosition = hit.position;
             }
             
