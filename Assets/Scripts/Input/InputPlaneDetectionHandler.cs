@@ -2,16 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 namespace CloudPet.Common 
 {
     /// <summary>
     /// 入力を検知して平面検出と交差させるやつ
     /// </summary>
-    public class InputPlaneDetectionHandler : MonoBehaviour, IPointerDownHandler
+    public class InputPlaneDetectionHandler : MonoBehaviour
     {
         [SerializeField] 
         private ARRaycastManager _raycastManager;
@@ -21,16 +24,19 @@ namespace CloudPet.Common
 
         public event Action<bool, Vector3> onPointerDownCallback;
         
-        private void Awake()
+        private void Start()
         {
             if (_raycastManager == null)
             {
                 var raycastManager = FindObjectOfType<ARRaycastManager>();
                 _raycastManager = raycastManager;
             }
+
+            EnhancedTouchSupport.Enable();
+            Touch.onFingerDown += finger => RaycastCheck(finger.screenPosition);
         }
         
-        public void OnPointerDown(PointerEventData pointerEventData)
+        private void RaycastCheck(Vector2 position)
         {
             if (_raycastManager == null)
             {
@@ -38,16 +44,17 @@ namespace CloudPet.Common
                 return;
             }
 
-            var touch = pointerEventData.position;
             var hitPosition = Vector3.zero;
             var hitList = new List<ARRaycastHit>();
-            var raycast = _raycastManager.Raycast(touch, hitList, _trackableType);
+            var raycast = _raycastManager.Raycast(position, hitList, _trackableType);
 
             if (raycast)
             {
                 var hit = hitList.FirstOrDefault().pose;
                 hitPosition = hit.position;
             }
+            
+            Debug.Log($"{raycast}::{position}");
             
             onPointerDownCallback?.Invoke(raycast, hitPosition);
         }
