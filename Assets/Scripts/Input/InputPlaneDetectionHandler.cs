@@ -20,7 +20,7 @@ namespace CloudPet.Common
         private ARRaycastManager _raycastManager;
 
         [SerializeField] 
-        private TrackableType _trackableType = TrackableType.Planes;
+        private TrackableType _trackableType = TrackableType.PlaneWithinPolygon;
 
         private List<ARRaycastHit> _hitListPool = new List<ARRaycastHit>();
 
@@ -55,8 +55,6 @@ namespace CloudPet.Common
                 var hit = _hitListPool.FirstOrDefault().pose;
                 hitPosition = hit.position;
             }
-            
-            Debug.Log($"{raycast}::{position}");
             
             onPointerDownCallback?.Invoke(raycast, hitPosition);
         }

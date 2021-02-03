@@ -39,9 +39,9 @@ namespace CloudPet.Common
 
         private void CreateObject(Vector3 position)
         {
-            Debug.Log("test");
             var obj = Instantiate(_prefab);
             obj.transform.position = position;
+            obj.transform.localScale = Vector3.one;
         }
     }
 }
